@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Draw.io Scientific Illustrator · jundongHe</title>
+  <meta name="description" content="Draw.io Scientific Illustrator 技能说明与用途记录" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .content { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+    .content h1 { font-size: 1.75rem; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
+    .content .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+    .content h2 { font-size: 1.2rem; margin: 2rem 0 0.75rem; }
+    .content p, .content li { color: var(--text-muted); line-height: 1.7; margin-bottom: 0.75rem; }
+    .content ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .content code { background: var(--bg-elevated); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
+    .content pre { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; overflow-x: auto; font-size: 0.85rem; margin: 1rem 0; color: var(--text); }
+    .content a { color: var(--accent); }
+    .back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
+    .back:hover { color: var(--text); }
+    .tag { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-right: 0.4rem; }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="glow"></div>
+
+  <header class="header">
+    <div class="logo">jundongHe</div>
+    <nav class="nav">
+      <a href="../index.html">首页</a>
+      <a href="../index.html#skills">工具</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <a href="../index.html#skills" class="back">← 返回工具列表</a>
+
+    <p>
+      <span class="tag">Skill</span>
+      <span class="tag">科研插图</span>
+      <span class="tag">draw.io</span>
+    </p>
+    <h1>Draw.io Scientific Illustrator</h1>
+    <p class="meta">收藏日期：2026-07-29 · 来源：<a href="https://github.com/icebird1998/drawio-scientific-illustrator" target="_blank" rel="noopener">icebird1998/drawio-scientific-illustrator</a></p>
+
+    <h2>这是什么</h2>
+    <p>一个面向科研插图的 Codex 插件。它会启动桌面版 draw.io，并通过仅限本机的 MCP 通道直接调用 draw.io 自身的图模型 API。你可以亲眼看到形状、文字、箭头、配色和布局按步骤出现在画布上。</p>
+    <p>它不会模拟系统鼠标或键盘，也不会先生成 XML 再让 draw.io 打开。只有当可见画布中的图已经绘制完成后，才会把当前图模型保存为 <code>.drawio</code> 文件。</p>
+
+    <h2>用途说明</h2>
+    <ul>
+      <li><strong>根据参考图重绘科研图</strong>：上传 PNG / JPEG / SVG 或 PDF 页面，让 AI 在真实 draw.io 画布上逐步复刻，且尽量保持为可编辑图元（文字、形状、连线、图例）。</li>
+      <li><strong>做可继续修改的示意图</strong>：适合论文机制图、实验流程图、系统架构图、细胞通路图等，输出不是一张死图，而是可以在 draw.io 里继续改的源文件。</li>
+      <li><strong>边画边看、边改</strong>：支持按区域绘制 → 截图审查 → 修正标签/位置/样式，再继续，而不是一次性盲画。</li>
+      <li><strong>导出交付物</strong>：可保存 <code>.drawio</code>，并导出 PNG、SVG、PDF、JPG。</li>
+    </ul>
+
+    <h2>包含什么</h2>
+    <ul>
+      <li><code>drawio-live</code> MCP：启动/连接可见的 draw.io，并实时编辑其 graph 模型</li>
+      <li><code>drawio-file-utils</code> MCP：校验 .drawio 并导出 PNG / SVG / PDF / JPG</li>
+      <li>Codex Skill：教 agent 如何分解参考图、控制绘制节奏、视觉审查、迭代修正</li>
+    </ul>
+
+    <h2>典型使用方式</h2>
+    <ol style="padding-left:1.25rem;color:var(--text-muted);line-height:1.7;">
+      <li>安装插件并重启 Codex，新建任务</li>
+      <li>附上参考图（PNG / JPEG / SVG / PDF 页）</li>
+      <li>提到或选择 <strong>Draw.io Scientific Illustrator</strong></li>
+      <li>说明步进间隔、希望导出的格式</li>
+    </ol>
+
+    <h2>推荐提示词（中文）</h2>
+    <pre>使用 Draw.io Scientific Illustrator。启动实时 draw.io，以 100 ms 的步骤间隔逐步重绘
+这张参考图。必须直接控制 draw.io 自己的画布 API，不要控制系统鼠标键盘，也不要先
+生成 XML。所有文字、箭头、分区、图例都要保持可编辑。每完成一个逻辑区域就检查并
+修正，最后保存 .drawio，并导出宽度为 2000 px 的 PNG 预览图。</pre>
+
+    <h2>为什么值得保留</h2>
+    <p>很多 AI 画图工具输出的是位图或难改的矢量。这个 skill 的价值在于：<strong>过程可见 + 结果可编辑</strong>。对写论文、做组会 PPT、画系统图的人来说，省掉「重画一遍才能改」的成本。</p>
+
+    <h2>相关链接</h2>
+    <ul>
+      <li><a href="https://github.com/icebird1998/drawio-scientific-illustrator" target="_blank" rel="noopener">GitHub 仓库</a></li>
+      <li><a href="https://www.drawio.com/" target="_blank" rel="noopener">draw.io 桌面版</a></li>
+    </ul>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 jundongHe · 托管于 GitHub Pages</p>
+  </footer>
+</body>
+</html>
