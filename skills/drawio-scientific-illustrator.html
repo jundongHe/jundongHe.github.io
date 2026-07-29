@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Draw.io Scientific Illustrator · jundongHe</title>
-  <meta name="description" content="Draw.io Scientific Illustrator 技能说明与用途记录" />
+  <title>Draw.io Scientific Illustrator · 存档 · jundongHe</title>
+  <meta name="description" content="Draw.io Scientific Illustrator 技能存档：用途、工作流、硬边界与推荐提示词" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -13,15 +13,17 @@
     .content { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
     .content h1 { font-size: 1.75rem; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
     .content .meta { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
-    .content h2 { font-size: 1.2rem; margin: 2rem 0 0.75rem; }
+    .content h2 { font-size: 1.2rem; margin: 2rem 0 0.75rem; color: var(--text); }
+    .content h3 { font-size: 1.05rem; margin: 1.25rem 0 0.5rem; color: var(--text); }
     .content p, .content li { color: var(--text-muted); line-height: 1.7; margin-bottom: 0.75rem; }
-    .content ul { padding-left: 1.25rem; margin-bottom: 1rem; }
+    .content ul, .content ol { padding-left: 1.25rem; margin-bottom: 1rem; }
     .content code { background: var(--bg-elevated); padding: 0.15rem 0.4rem; border-radius: 4px; font-size: 0.9em; }
-    .content pre { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; overflow-x: auto; font-size: 0.85rem; margin: 1rem 0; color: var(--text); }
+    .content pre { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; overflow-x: auto; font-size: 0.85rem; margin: 1rem 0; color: var(--text); white-space: pre-wrap; word-break: break-word; }
     .content a { color: var(--accent); }
     .back { display: inline-block; margin-bottom: 1.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; }
     .back:hover { color: var(--text); }
-    .tag { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-right: 0.4rem; }
+    .tag { display: inline-block; font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-right: 0.4rem; margin-bottom: 0.3rem; }
+    .note { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.15rem; margin: 1.25rem 0; font-size: 0.9rem; color: var(--text-muted); }
   </style>
 </head>
 <body>
@@ -40,58 +42,51 @@
     <a href="../index.html#skills" class="back">← 返回工具列表</a>
 
     <p>
-      <span class="tag">Skill</span>
+      <span class="tag">Skill 存档</span>
       <span class="tag">科研插图</span>
       <span class="tag">draw.io</span>
+      <span class="tag">MIT</span>
     </p>
     <h1>Draw.io Scientific Illustrator</h1>
-    <p class="meta">收藏日期：2026-07-29 · 来源：<a href="https://github.com/icebird1998/drawio-scientific-illustrator" target="_blank" rel="noopener">icebird1998/drawio-scientific-illustrator</a></p>
+    <p class="meta">
+      本地存档日期：2026-07-30<br />
+      来源：<a href="https://github.com/icebird1998/drawio-scientific-illustrator" target="_blank" rel="noopener">icebird1998/drawio-scientific-illustrator</a><br />
+      协议：MIT · 原作者保留版权，本页仅作个人知识存档与学习用途
+    </p>
 
-    <h2>这是什么</h2>
-    <p>一个面向科研插图的 Codex 插件。它会启动桌面版 draw.io，并通过仅限本机的 MCP 通道直接调用 draw.io 自身的图模型 API。你可以亲眼看到形状、文字、箭头、配色和布局按步骤出现在画布上。</p>
-    <p>它不会模拟系统鼠标或键盘，也不会先生成 XML 再让 draw.io 打开。只有当可见画布中的图已经绘制完成后，才会把当前图模型保存为 <code>.drawio</code> 文件。</p>
+    <div class="note">
+      本页目的：把该 skill 的<strong>用途、硬边界、标准工作流、保真规则与推荐提示词</strong>保存在本站。即使上游仓库停止维护，这里仍可查阅核心用法。完整可运行插件仍需原仓库的 MCP 与安装脚本。
+    </div>
 
-    <h2>用途说明</h2>
+    <h2>1. 这是什么</h2>
+    <p>面向科研插图的 Codex 插件。它会启动桌面版 draw.io，通过仅限本机的 MCP 通道直接调用 draw.io 自身的图模型 API。你可以看见形状、文字、箭头、配色和布局按步骤出现在画布上。</p>
+    <p>不模拟系统鼠标/键盘，也不先生成 XML 再打开。只有可见画布上的图绘制完成后，才把当前图模型保存为 <code>.drawio</code>。</p>
+
+    <h2>2. 用途（为什么值得留）</h2>
     <ul>
-      <li><strong>根据参考图重绘科研图</strong>：上传 PNG / JPEG / SVG 或 PDF 页面，让 AI 在真实 draw.io 画布上逐步复刻，且尽量保持为可编辑图元（文字、形状、连线、图例）。</li>
-      <li><strong>做可继续修改的示意图</strong>：适合论文机制图、实验流程图、系统架构图、细胞通路图等，输出不是一张死图，而是可以在 draw.io 里继续改的源文件。</li>
-      <li><strong>边画边看、边改</strong>：支持按区域绘制 → 截图审查 → 修正标签/位置/样式，再继续，而不是一次性盲画。</li>
-      <li><strong>导出交付物</strong>：可保存 <code>.drawio</code>，并导出 PNG、SVG、PDF、JPG。</li>
+      <li><strong>参考图可编辑复刻</strong>：PNG / JPEG / SVG / PDF 页 → 尽量变成可改的文字、形状、连线、图例</li>
+      <li><strong>论文与组会用图</strong>：机制图、实验流程、系统架构、通路图等，输出可继续在 draw.io 里改</li>
+      <li><strong>边画边审</strong>：按区域绘制 → 截图审查 → 修正 → 再继续</li>
+      <li><strong>导出交付</strong>：保存 <code>.drawio</code>，导出 PNG / SVG / PDF / JPG</li>
     </ul>
 
-    <h2>包含什么</h2>
+    <h2>3. Skill 触发描述（原文要点）</h2>
+    <p>用于：在可见的 draw.io 桌面画布中，通过 draw.io 自身的 graph API，重绘、描摹、修改、检查或导出静态科研图与示意图。</p>
+    <p>适用场景包括：希望逐步观看绘制过程；明确拒绝「先生成 XML 再打开」或系统键鼠自动化；提供参考图要重建为可编辑几何；需要最终 <code>.drawio</code> / PNG / SVG / PDF / JPG。</p>
+
+    <h2>4. 硬边界（必须遵守）</h2>
     <ul>
-      <li><code>drawio-live</code> MCP：启动/连接可见的 draw.io，并实时编辑其 graph 模型</li>
-      <li><code>drawio-file-utils</code> MCP：校验 .drawio 并导出 PNG / SVG / PDF / JPG</li>
-      <li>Codex Skill：教 agent 如何分解参考图、控制绘制节奏、视觉审查、迭代修正</li>
+      <li>只通过 live MCP 控制 draw.io 内部 graph / model API</li>
+      <li>禁止使用操作系统级鼠标、键盘、窗口或全屏自动化</li>
+      <li>禁止以「先写好 XML 再打开」作为主要绘制方式；只有可见图元已存在后才序列化 <code>.drawio</code></li>
+      <li>截图仅用于检查 draw.io 画布本身，不是通用屏幕控制</li>
     </ul>
 
-    <h2>典型使用方式</h2>
-    <ol style="padding-left:1.25rem;color:var(--text-muted);line-height:1.7;">
-      <li>安装插件并重启 Codex，新建任务</li>
-      <li>附上参考图（PNG / JPEG / SVG / PDF 页）</li>
-      <li>提到或选择 <strong>Draw.io Scientific Illustrator</strong></li>
-      <li>说明步进间隔、希望导出的格式</li>
-    </ol>
-
-    <h2>推荐提示词（中文）</h2>
-    <pre>使用 Draw.io Scientific Illustrator。启动实时 draw.io，以 100 ms 的步骤间隔逐步重绘
-这张参考图。必须直接控制 draw.io 自己的画布 API，不要控制系统鼠标键盘，也不要先
-生成 XML。所有文字、箭头、分区、图例都要保持可编辑。每完成一个逻辑区域就检查并
-修正，最后保存 .drawio，并导出宽度为 2000 px 的 PNG 预览图。</pre>
-
-    <h2>为什么值得保留</h2>
-    <p>很多 AI 画图工具输出的是位图或难改的矢量。这个 skill 的价值在于：<strong>过程可见 + 结果可编辑</strong>。对写论文、做组会 PPT、画系统图的人来说，省掉「重画一遍才能改」的成本。</p>
-
-    <h2>相关链接</h2>
-    <ul>
-      <li><a href="https://github.com/icebird1998/drawio-scientific-illustrator" target="_blank" rel="noopener">GitHub 仓库</a></li>
-      <li><a href="https://www.drawio.com/" target="_blank" rel="noopener">draw.io 桌面版</a></li>
-    </ul>
-  </main>
-
-  <footer class="footer">
-    <p>© 2026 jundongHe · 托管于 GitHub Pages</p>
-  </footer>
-</body>
-</html>
+    <h2>5. 标准工作流（10 步）</h2>
+    <ol>
+      <li>先用视觉能力看清参考图（PDF 先渲染相关页）。不要只是把位图嵌进去就算重绘。</li>
+      <li>拆成可编辑图元：画布比例、分面、容器、节点、文字、箭头、图例、重复母题、颜色、线宽、字体、层级。无法用图元忠实表达的部分标出，可考虑位图区域。</li>
+      <li>调用 <code>drawio_live_launch</code>（建议步进延迟 400–1000 ms），用 <code>drawio_live_status</code> 确认 <code>graph_ready=true</code> 再画。</li>
+      <li>向实时画布添加几何：单步用 <code>drawio_live_add_shape</code> / <code>drawio_live_add_edge</code>；批量用带非零 <code>step_delay_ms</code> 的 <code>drawio_live_draw_sequence</code>。从一开始就用稳定、有语义的 cell id。</li>
+      <li>每个逻辑区块完成后调用 <code>drawio_live_screenshot</code>，对照参考图检查。</li>
+      <li>在实时图上迭代：<code>drawio_live_inspect</code> + <code>drawio_live_update_cell</code> 改标签、样式、位置、大小；用 <code>drawio_live
